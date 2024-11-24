@@ -4,9 +4,10 @@ import "github.com/fatih/color"
 
 // predefined color functions
 var (
-    Red    = color.New(color.FgRed).SprintFunc()
-    Green  = color.New(color.FgGreen).SprintFunc()
-    Yellow = color.New(color.FgYellow).SprintFunc()
-    Orange = color.New(color.FgOrange).SprintFunc()
+	Red    = color.New(color.FgRed).SprintFunc()
+	Green  = color.New(color.FgGreen).SprintFunc()
+	Yellow = color.New(color.FgYellow).SprintFunc()
+	Orange = color.New(color.FgOrange).SprintFunc()
+	Blue   = color.New(color.FgBlue).SprintFunc()
+	Cyan   = color.New(color.FgCyan).SprintFunc()
 )
-

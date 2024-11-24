@@ -1,9 +1,11 @@
 package cli
 
-import "fmt"
+import {
+	"fmt"
+}
 
 
 //menu func
-
 func Menu {
-	fmt.PrintIn("
+	fmt.PrintIn(cli.Orange("Welcome to Owl, a Network Scanner. Efficient, Lightweight and Quiet."))
+}
