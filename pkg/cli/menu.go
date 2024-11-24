@@ -1,27 +1,30 @@
 package cli
 
 import (
-	"github.com/gdamore/tcell/v2"
+	"fmt"
+	"log"
+
+
+	"github.com/rivo/tview"
 )
 
-// Print the menu with selection highlighting
-func PrintMenu(s tcell.Screen, options []string, selectedIndex int) {
-	width, height := s.Size()
+func Menu() {
+	// Create a new application
+	app := tview.NewApplication()
+	box := tview.NewBox().
+		SetBorder(true).
+		SetBorderTitle("Owl")
 
-	for i, option := range options {
-		style := tcell.StyleDefault
-		if i == selectedIndex {
-			style = style.Background(tcell.ColorBlue).Foreground(tcell.ColorWhite) // highlight selected option
-		} else {
-			style = style.Foreground(tcell.ColorWhite) // default style for other options
-		}
+	// makes the menu, i'm planning to use a modular approach when it comes 
+	list := tview.NewList().
+		AddItem("Scan a Network", "", '1', nil).
+		AddItem("About", "", '2', nil).
+		AddItem("Exit", "Exit the program", '3', func() {
+			app.Stop()
+		})
 
-		// print each option centered
-		for j, r := range option {
-			s.SetContent(width/2-len(option)/2+j, height/2-len(options)/2+i, r, nil, style)
-		}
+	// Set the list as the root view and focus it
+	if err := app.SetRoot(list, true).SetFocus(list).Run(); err != nil {
+		log.Fatalf("%+v", err)
 	}
-
-	s.Show()
 }
-
