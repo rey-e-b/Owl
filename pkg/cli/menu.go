@@ -9,9 +9,6 @@ import (
 func Menu() {
 	// Create a new application
 	app := tview.NewApplication()
-	box := tview.NewBox().
-		SetBorder(true).
-		SetTitle("Owl")
 
 	// makes the menu, i'm planning to use a modular approach when it comes 
 	list := tview.NewList().
