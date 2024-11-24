@@ -1,9 +1,7 @@
 package cli
 
 import (
-	"fmt"
 	"log"
-
 
 	"github.com/rivo/tview"
 )
@@ -13,7 +11,7 @@ func Menu() {
 	app := tview.NewApplication()
 	box := tview.NewBox().
 		SetBorder(true).
-		SetBorderTitle("Owl")
+		SetTitle("Owl")
 
 	// makes the menu, i'm planning to use a modular approach when it comes 
 	list := tview.NewList().
