@@ -8,6 +8,7 @@ At this stage, it is a **work in progress** and is *not yet feature-complete*. E
 
 ## Built With
 [![Go](https://img.shields.io/badge/Go-%2300ADD8.svg?&logo=go&logoColor=white)](#)
+[![Rust](https://img.shields.io/badge/Rust-%23000000.svg?e&logo=rust&logoColor=white)](#)
 
 ## Current Status
 - Early development phase
