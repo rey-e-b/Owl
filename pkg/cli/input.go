@@ -1,27 +1,23 @@
 package cli
 
 import (
-	"fmt"
-	"os"
-	"os/exec"
-	"strings"
+	"github.com/gdamore/tcell/v2"
 )
 
-// ClearTerminal clears the terminal screen
-func ClearTerminal() {
-	cmd := exec.Command("clear") // use "cls" for Windows
-	cmd.Stdout = os.Stdout
-	cmd.Run()
-}
-
-// ReadInput reads user input from the terminal
-func ReadInput() string {
-	var input string
-	fmt.Scanln(&input)
-	input = strings.ToLower(input) // convert input to lowercase for consistency
-	if input == "" {
-		input = "enter" // default to enter if no input
+// Read input from the user
+func ReadInput(s tcell.Screen) string {
+	event := s.PollEvent()
+	switch ev := event.(type) {
+	case *tcell.EventKey:
+		switch ev.Key() {
+		case tcell.KeyArrowUp:
+			return "up"
+		case tcell.KeyArrowDown:
+			return "down"
+		case tcell.KeyEnter:
+			return "enter"
+		}
 	}
-	return input
+	return ""
 }
 

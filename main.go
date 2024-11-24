@@ -2,30 +2,37 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"log"
 	"time"
-	"Owl/pkg/cli"
+	"github.com/rey-e-b/Owl/pkg/cli"
 )
 
 func main() {
 	options := []string{"Scan Network", "About", "Exit"}
 	selectedIndex := 0
 
+	// initialize screen with tcell
+	s, err := cli.InitScreen()
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer s.Fini()
+
 	for {
 		// clear terminal and print menu
-		cli.ClearTerminal()
-		cli.PrintMenu(options, selectedIndex)
+		cli.ClearTerminal(s)
+		cli.PrintMenu(s, options, selectedIndex)
 
 		// handle user input
-		input := cli.ReadInput()
+		input := cli.ReadInput(s)
 
 		// handle menu navigation and selection
 		switch input {
-		case "w": // move up
+		case "up": // move up
 			if selectedIndex > 0 {
 				selectedIndex--
 			}
-		case "s": // move down
+		case "down": // move down
 			if selectedIndex < len(options)-1 {
 				selectedIndex++
 			}

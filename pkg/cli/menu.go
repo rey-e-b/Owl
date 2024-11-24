@@ -1,18 +1,27 @@
 package cli
 
-import "fmt"
+import (
+	"github.com/gdamore/tcell/v2"
+)
 
-// PrintMenu displays the options in the menu with the selected option highlighted
-func PrintMenu(options []string, selectedIndex int) {
-	fmt.Println("Owl Menu")
-	fmt.Println()
+// Print the menu with selection highlighting
+func PrintMenu(s tcell.Screen, options []string, selectedIndex int) {
+	width, height := s.Size()
+
 	for i, option := range options {
+		style := tcell.StyleDefault
 		if i == selectedIndex {
-			// Highlight selected option
-			fmt.Printf("[*] %s\n", option)
+			style = style.Background(tcell.ColorBlue).Foreground(tcell.ColorWhite) // highlight selected option
 		} else {
-			fmt.Printf("[ ] %s\n", option)
+			style = style.Foreground(tcell.ColorWhite) // default style for other options
+		}
+
+		// print each option centered
+		for j, r := range option {
+			s.SetContent(width/2-len(option)/2+j, height/2-len(options)/2+i, r, nil, style)
 		}
 	}
+
+	s.Show()
 }
 
