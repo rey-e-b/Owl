@@ -7,7 +7,7 @@ At this stage, it is a **work in progress** and is *not yet feature-complete*. E
 > Feel free to contribute, open issues, or provide feedback!
 
 ## Built With
-![Go](https://img.shields.io/badge/Go-00ADD8?logo=Go&logoColor=white&style=for-the-badge)
+[![Go](https://img.shields.io/badge/Go-%2300ADD8.svg?&logo=go&logoColor=white)](#)
 
 ## Current Status
 - Early development phase
