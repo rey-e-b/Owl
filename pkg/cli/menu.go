@@ -1,7 +1,7 @@
 package cli
 
 import (
-	"log"
+
 	"github.com/rivo/tview"
 )
 
