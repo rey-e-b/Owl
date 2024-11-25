@@ -13,7 +13,8 @@ func SecondMenu(app *tview.Application) {
 			// switch back to the main menu
 			Menu(app)
 		})
-
+	list.SetBorder(true).SetTitle(" Sub Menu ")
+	
 	// set the second menu as the root
 	app.SetRoot(list, true).SetFocus(list)
 }

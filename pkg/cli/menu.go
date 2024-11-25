@@ -1,23 +1,26 @@
 package cli
 
 import (
-
 	"github.com/rivo/tview"
 )
 
-// menu defines the parent list
+// Menu creates a menu inside a frame with a border
 func Menu(app *tview.Application) error {
+	// Create the list (menu items)
 	list := tview.NewList().
 		AddItem("Scan a Network", "", '1', func() {
-			// switch to the second menu
-			SecondMenu(app)
+			SecondMenu(app)	
 		}).
 		AddItem("About", "", '2', nil).
 		AddItem("Exit", "Exit the program", '3', func() {
 			app.Stop()
 		})
 
-	// set the root view and focus the list
+
+	// Create a box with a border around the list
+	list.SetBorder(true).SetTitle(" Main Menu ")
+
+	// Set the list as the root view and run the app
 	return app.SetRoot(list, true).SetFocus(list).Run()
 }
 
