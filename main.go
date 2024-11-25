@@ -5,9 +5,6 @@ import (
 )
 
 func main() {
-	box := tview.NewBox().
-	SetBorder(true).
-	SetTitle("Owl")
 
 	cli.Menu()
 }
